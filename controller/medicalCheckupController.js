@@ -44,3 +44,39 @@ export const store = async (req, res) => {
 		res.status(500).json({error: "Internal Server Error."})
 	}
 }
+
+export const update = async (req, res) => {
+	try {
+		const id = req.params.id;
+
+		const mcuExist = await MedicalCheckUp.findOne({_id:id});
+		if (!mcuExist) {
+			return res.status(404).json({message: "MCU Not Found!"});
+		}
+		const updateMcu = await MedicalCheckUp.findByIdAndUpdate(id, req.body, {new:true});
+		return res.status(201).json({
+			message: "Medical Checkup Updated!",
+			data: updateMcu
+		});
+	} catch (error) {
+		res.status(500).json({error: "Internal Server Error."})
+	}
+}
+
+export const destroy = async (req, res) => {
+	try {
+		const id = req.params.id;
+
+		const mcuExist = await MedicalCheckUp.findOne({_id:id});
+		if (!mcuExist) {
+			return res.status(404).json({message: "MCU Not Found!"});
+		}
+		const deleteMcu = await MedicalCheckUp.findByIdAndDelete(id, {new: false});
+		return res.status(201).json({
+			message: "Medical Checkup Deleted!",
+			data: deleteMcu
+		});
+	} catch (error) {
+		res.status(500).json({error: "Internal Server Error."})
+	}
+}
