@@ -1,5 +1,4 @@
-import User from "../model/UserModel.js"
-
+import User from "../model/userModel.js"
 
 export const index = async (req, res) => {
 	try {
