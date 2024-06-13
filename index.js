@@ -2,7 +2,8 @@ import express from "express"
 import mongoose from "mongoose"
 import bodyParser from "body-parser"
 import dotenv from "dotenv"
-import route from "./routes/userRoute.js"
+import userRoute from "./routes/userRoute.js"
+import medicalCheckupRoute from "./routes/medicalCheckupRoute.js"
 
 // menginisalisasi express app
 const app = express();
@@ -22,4 +23,5 @@ mongoose.connect(MONGOURL).then(() => {
 }).catch((error) => console.log(error));
 
 // memakai route user
-app.use("/api/user", route);
+app.use("/api/user", userRoute);
+app.use("/api/mcu", medicalCheckupRoute);
