@@ -1,10 +1,9 @@
 {
-  "name": "usercrud",
+  "name": "medicalcheckup",
   "version": "1.0.0",
-  "description": "user crud",
+  "description": "Medical Checkup",
   "main": "index.js",
   "type": "module",
-
   "scripts": {
     "start": "nodemon index.js"
   },
